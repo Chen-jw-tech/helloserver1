@@ -1,8 +1,10 @@
 package com.stu.helloserver.controller;
 
+import com.stu.helloserver.Entity.UserInfo;
 import com.stu.helloserver.common.Result;
 import com.stu.helloserver.dto.UserDTO;
 import com.stu.helloserver.service.UserService;
+import com.stu.helloserver.vo.UserDetailVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -41,5 +43,19 @@ public class UserController {
     @GetMapping("/{id}")
     public Result<String> getUser(@PathVariable("id") Long id) {
         return userService.getUserById(id);
+    }
+    @GetMapping("/{id}/detail")
+    public Result<UserDetailVO> getUserDetail(@PathVariable("id") Long userId) {
+        return userService.getUserDetail(userId);
+    }
+
+    @PutMapping("/{id}/detail")
+    public Result<String> updateUserInfo(@PathVariable("id") Long userId, @RequestBody UserInfo userInfo) {
+        return userService.updateUserInfo(userId, userInfo);
+    }
+
+    @DeleteMapping("/{id}")
+    public Result<String> deleteUser(@PathVariable("id") Long userId) {
+        return userService.deleteUser(userId);
     }
 }

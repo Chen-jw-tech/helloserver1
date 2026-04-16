@@ -5,3 +5,8 @@ spring:
     username: postgres
     password: 123456  # 替换为你的数据库密码
 
+  data:
+    redis:
+      host: 127.0.0.1
+      port: 6379
+      database: 0
