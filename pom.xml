@@ -59,6 +59,11 @@
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>org.postgresql</groupId>
+            <artifactId>postgresql</artifactId>
+            <!-- 版本号通常由 Spring Boot Parent 管理，无需显式指定，若需指定建议使用 42.7.3 或更高版本 -->
+        </dependency>
     </dependencies>
 
     <build>
