@@ -10,6 +10,7 @@ import com.stu.helloserver.common.ResultCode;
 import com.stu.helloserver.dto.UserDTO;
 import com.stu.helloserver.mapper.UserInfoMapper;    // 新增的 Mapper
 import com.stu.helloserver.mapper.UserMapper;
+import com.stu.helloserver.security.JwtUtil;
 import com.stu.helloserver.service.UserService;
 import com.stu.helloserver.vo.UserDetailVO;          // 新增的 VO
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,6 +33,9 @@ public class UserServiceImpl implements UserService {
     @Autowired
     private UserInfoMapper userInfoMapper;
 
+    @Autowired
+    private JwtUtil jwtUtil;
+
     // 缓存键前缀
     private static final String CACHE_KEY_PREFIX = "user:detail:";
 
@@ -51,7 +55,6 @@ public class UserServiceImpl implements UserService {
         return Result.success("注册成功!");
     }
 
-    @Override
     public Result<String> login(UserDTO userDTO) {
         LambdaQueryWrapper<User> queryWrapper = new LambdaQueryWrapper<>();
         queryWrapper.eq(User::getUsername, userDTO.getUsername());
@@ -62,7 +65,9 @@ public class UserServiceImpl implements UserService {
         if (!dbUser.getPassword().equals(userDTO.getPassword())) {
             return Result.error(ResultCode.PASSWORD_ERROR);
         }
-        return Result.success("登录成功!");
+        // 登录成功，生成 JWT 并返回
+        String jwt = jwtUtil.generateToken(userDTO.getUsername());
+        return Result.success(jwt);
     }
 
     @Override
