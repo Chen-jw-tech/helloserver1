@@ -35,7 +35,10 @@
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
 
-
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-security</artifactId>
+        </dependency>
 
         <!-- MyBatis-Plus Spring Boot 3 适配 -->
         <dependency>
@@ -74,9 +77,9 @@
             <scope>test</scope>
         </dependency>
         <dependency>
-            <groupId>org.postgresql</groupId>
-            <artifactId>postgresql</artifactId>
-            <!-- 版本号通常由 Spring Boot Parent 管理，无需显式指定，若需指定建议使用 42.7.3 或更高版本 -->
+            <groupId>com.mysql</groupId>
+            <artifactId>mysql-connector-j</artifactId>
+            <!-- 不写 version，由 spring-boot-starter-parent 统一管理 -->
         </dependency>
     </dependencies>
 
