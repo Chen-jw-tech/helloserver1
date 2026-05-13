@@ -11,6 +11,11 @@ spring:
       port: 6379
       database: 0
 
+spring:
+  ai:
+    dashscope:
+      api-key: ${AI_DASHSCOPE_API_KEY}
+
 jwt:
   secret: demo-jwt-secret-key-for-spring-security-2026
   expiration: 7200000

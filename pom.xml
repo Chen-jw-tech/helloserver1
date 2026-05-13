@@ -99,6 +99,19 @@
             <artifactId>mysql-connector-j</artifactId>
             <!-- 不写 version，由 spring-boot-starter-parent 统一管理 -->
         </dependency>
+
+        <!-- Spring AI Alibaba Agent Framework -->
+        <dependency>
+            <groupId>com.alibaba.cloud.ai</groupId>
+            <artifactId>spring-ai-alibaba-agent-framework</artifactId>
+            <version>1.1.2.0</version>
+        </dependency>
+        <!-- DashScope ChatModel支持-->
+        <dependency>
+            <groupId>com.alibaba.cloud.ai</groupId>
+            <artifactId>spring-ai-alibaba-starter-dashscope</artifactId>
+            <version>1.1.2.0</version>
+        </dependency>
     </dependencies>
 
     <build>
